@@ -86,6 +86,12 @@ struct factorization:private boost::noncopyable
 };
 
 #if !defined(BOOST_NO_EXCEPTIONS)
+
+#ifdef BOOST_MSVC
+# pragma warning(push)
+# pragma warning(disable: 4702) // unreachable code
+#endif
+
 struct throwing_value_exception{};
 
 struct throwing_value
@@ -101,6 +107,11 @@ struct from_throwing_value_to_int
 {
   const int& operator()(const throwing_value& x)const{return x.n;}
 };
+
+#ifdef BOOST_MSVC
+# pragma warning(pop)
+#endif
+
 #endif
 
 #endif

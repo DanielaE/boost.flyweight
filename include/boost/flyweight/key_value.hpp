@@ -123,6 +123,11 @@ struct optimized_key_value:value_marker
       return k(x);
     }
 
+#ifdef BOOST_MSVC
+# pragma warning(push)
+# pragma warning(disable:4702) // unreachable code
+#endif
+
     void construct_value()const
     {
       if(!value_cted()){
@@ -140,6 +145,10 @@ struct optimized_key_value:value_marker
         value_ptr=new(spc_ptr())value_type(k);
       }
     }
+
+#ifdef BOOST_MSVC
+# pragma warning(pop)
+#endif
 
     void copy_value()const
     {
