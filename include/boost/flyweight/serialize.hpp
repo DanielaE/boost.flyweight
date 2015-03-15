@@ -46,7 +46,7 @@ template<
 >
 void save(
   Archive& ar,const ::boost::flyweights::flyweight<T,Arg1,Arg2,Arg3>& f,
-  const unsigned int version)
+  const unsigned int /*version*/)
 {
   typedef ::boost::flyweights::flyweight<T,Arg1,Arg2,Arg3>    flyweight;
   typedef ::boost::flyweights::detail::save_helper<flyweight> helper;
